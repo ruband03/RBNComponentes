@@ -1,0 +1,13 @@
+/* editar_comentario.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.edit-comment textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

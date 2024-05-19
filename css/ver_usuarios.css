@@ -1,0 +1,32 @@
+/* ver_usuarios.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table, .table th, .table td {
+    border: 1px solid #ddd;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.paginacion a {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.paginacion a:hover {
+    background-color: #0056b3;
+}

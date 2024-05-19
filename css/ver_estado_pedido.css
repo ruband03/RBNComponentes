@@ -1,0 +1,57 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.estado-pedido-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pedido {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.pedido h3 {
+    margin-top: 0;
+}
+
+.pedido p {
+    margin: 5px 0;
+}
+
+.pedido ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pedido ul li {
+    padding: 5px 0;
+}
+
+.paginacion {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginacion .btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.paginacion .btn:hover {
+    background-color: #0056b3;
+}

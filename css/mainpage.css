@@ -1,0 +1,35 @@
+/* mainpage.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    margin: 0;
+}
+
+.featured-products .product-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.featured-products .product-card {
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.featured-products .product-card img {
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}

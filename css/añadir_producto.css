@@ -1,0 +1,21 @@
+/* añadir_producto.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form textarea {
+    height: 100px;
+}

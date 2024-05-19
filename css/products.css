@@ -1,0 +1,55 @@
+/* products.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.products-section .filter {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.products-section .filter select {
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-card {
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 30%;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.wishlist-form {
+    display: inline;
+}
+
+.wishlist-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: gold;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.wishlist-btn:hover {
+    color: darkorange;
+}

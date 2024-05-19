@@ -1,0 +1,12 @@
+/* faq.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.faq-section .faq-item {
+    margin: 20px 0;
+}
+
+.faq-item h3 {
+    margin: 0;
+}

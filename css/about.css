@@ -1,0 +1,12 @@
+/* about.php */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.about-section h2, .about-section h3 {
+    text-align: center;
+}
+
+.full-width-map iframe {
+    border: 0;
+}
