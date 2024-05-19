@@ -19,7 +19,8 @@ $result = $conn->query("SELECT UserID, Username, EsAdministrador FROM Usuario");
     <meta charset="UTF-8">
     <title>Administrar Usuarios</title>
     <link rel="stylesheet" href="css/administrar_usuario.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon"> 
 </head>
 <body>
 <h1>Administrar Usuarios</h1>

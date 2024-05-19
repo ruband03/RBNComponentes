@@ -39,6 +39,7 @@ $solicitudes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Whitelist de Administradores</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/whitelist.css">
+    <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <?php include 'header.php'; ?>

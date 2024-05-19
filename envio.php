@@ -43,6 +43,7 @@ $comunidades = $conn->query("SELECT ComunidadID, Nombre FROM comunidades")->fetc
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Datos de Envío</title>
 <link rel="stylesheet" href="css/envio.css">
+<link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const comunidadSelect = document.getElementById('comunidad');

@@ -40,6 +40,7 @@ $total += $costeEnvio;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resumen de Pedido</title>
 <link rel="stylesheet" href="css/resumen_pedido.css">
+<link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <?php include 'header.php'; ?>

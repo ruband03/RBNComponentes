@@ -83,7 +83,7 @@ $conn->close();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registro</title>
 <link rel="stylesheet" href="css/register.css">
-<link rel="shortcut icon" href="../logos/RBNComponentes.ico" type="image/x-icon">
+<link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 

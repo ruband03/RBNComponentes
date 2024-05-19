@@ -14,6 +14,7 @@ include 'header.php';
 <title>Contacto</title>
 <link rel="stylesheet" href="css/contact.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <section class="contact-section">
