@@ -45,6 +45,7 @@ if (isset($_SESSION['UserID'])) {
 <header>
     <div class="container">
         <div class="title">
+            <img src="logos/logo.png" alt="Logo de RBNComponentes">
             <h1>RBNComponentes</h1>
         </div>
         <nav>
