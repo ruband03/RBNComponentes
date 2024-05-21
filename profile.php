@@ -33,7 +33,6 @@ try {
 <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
 <section class="profile-section">
     <div class="container">
         <h2>Mi Perfil</h2>
@@ -88,13 +87,10 @@ try {
                     <button type="button" onclick="confirmDelete()">Eliminar Perfil</button>
                 </div>
                 <?php if (isset($_GET['success']) && $_GET['success'] == 'true'): ?>
-                    <div class="success-message">
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                        </svg>
-                        Perfil Actualizado Correctamente
-                    </div>
+                    <script>
+                        alert('Perfil Actualizado Correctamente');
+                        window.location.href = 'profile.php';
+                    </script>
                 <?php elseif (isset($_GET['error'])): ?>
                     <div class="error-message">
                         <svg class="error-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -118,6 +114,5 @@ try {
     </div>
 </footer>
 <script src="js/confirmDelete.js"></script>
-
 </body>
 </html>

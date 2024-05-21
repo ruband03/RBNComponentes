@@ -27,7 +27,7 @@ body {
 
 .register-form input,
 .register-form select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
@@ -35,7 +35,7 @@ body {
 }
 
 .register-form button {
-    width: 100%;
+    width: 96%;
     padding: 10px;
     border: none;
     border-radius: 5px;

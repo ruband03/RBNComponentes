@@ -26,7 +26,7 @@ body {
 }
 
 .login-form input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
@@ -34,7 +34,7 @@ body {
 }
 
 .login-form button {
-    width: 100%;
+    width: 96%;
     padding: 10px;
     border: none;
     border-radius: 5px;

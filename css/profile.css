@@ -61,12 +61,24 @@ body {
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0; /* Ajusta según sea necesario */
+    padding: 10px; /* Ajusta según sea necesario */
     color: green;
+    background-color: #e6ffe6; /* Color de fondo para resaltar el mensaje */
+    border: 1px solid #b3ffb3; /* Borde para el mensaje */
+    border-radius: 5px;
 }
 
 .error-message {
     color: red;
+    background-color: #ffe6e6;
+    border: 1px solid #ffb3b3;
 }
