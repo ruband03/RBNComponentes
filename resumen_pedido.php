@@ -46,7 +46,7 @@ $total += $costeEnvio;
 <?php include 'header.php'; ?>
 
 <section class="resumen-section">
-    <div class="container">
+    <div class="container2">
         <h2>Resumen de Pedido</h2>
         <p><strong>Dirección:</strong> <?= htmlspecialchars($envio['direccion']) ?></p>
         <p><strong>Ciudad:</strong> <?= htmlspecialchars($envio['ciudad']) ?></p>

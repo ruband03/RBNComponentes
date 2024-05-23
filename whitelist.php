@@ -40,6 +40,7 @@ $solicitudes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/whitelist.css">
     <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -59,15 +60,16 @@ $solicitudes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
                 <?php if (count($solicitudes) > 0): ?>
                     <?php foreach ($solicitudes as $solicitud): ?>
-                        <tr>
+                        <tr id="solicitud-<?= $solicitud['RequestID'] ?>">
                             <td><?= htmlspecialchars($solicitud['Username']) ?></td>
                             <td><?= htmlspecialchars($solicitud['Motivo']) ?></td>
                             <td><?= htmlspecialchars($solicitud['RequestDate']) ?></td>
                             <td>
-                                <form method="post" action="aprobar_solicitud.php">
+                                <form method="post" action="aprobar_solicitud.php" style="display:inline;">
                                     <input type="hidden" name="solicitud_id" value="<?= $solicitud['RequestID'] ?>">
                                     <button type="submit" class="btn">Aceptar Propuesta</button>
                                 </form>
+                                <button class="btn delete-btn" onclick="eliminarSolicitud(<?= $solicitud['RequestID'] ?>)"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -93,9 +95,10 @@ $solicitudes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 <footer>
-    <div class::container">
+    <div class="container">
         <p>&copy; 2024 RBNComponentes. Todos los derechos reservados.</p>
     </div>
 </footer>
+<script src="js/eliminarSolicitudWth.js" defer></script>
 </body>
 </html>

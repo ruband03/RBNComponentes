@@ -35,7 +35,7 @@ $result = $conn->query("SELECT UserID, Username, EsAdministrador FROM Usuario");
         <td><?= htmlspecialchars($row['Username']) ?></td>
         <td><?= $row['EsAdministrador'] ? 'Sí' : 'No' ?></td>
         <td>
-            <?php if (!$row['EsAdministrador']): ?>
+            <?php if (!$row['EsAdministrador'] && $row['Username'] !== 'Rubenandia85'): ?>
             <a href="hacer_admin.php?user_id=<?= $row['UserID'] ?>">Hacer Admin</a>
             <?php endif; ?>
         </td>

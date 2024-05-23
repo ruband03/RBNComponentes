@@ -41,7 +41,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php include 'header.php'; ?>
 
 <section class="estado-pedido-section">
-    <div class="container">
+    <div class="container2">
         <h2>Estado de mi Pedido</h2>
         <?php if (empty($pedidos)): ?>
             <p>Ahora mismo, no tienes pedidos activos.</p>

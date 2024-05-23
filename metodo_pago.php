@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Método de Pago</title>
 <link rel="stylesheet" href="css/metodo_pago.css">
 <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -67,4 +68,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </footer>
 </body>
-</html>
+</html> 

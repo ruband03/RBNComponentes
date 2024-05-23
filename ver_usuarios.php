@@ -60,10 +60,10 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?= htmlspecialchars($usuario['Nombre']) ?></td>
                 <td><?= $usuario['EsAdministrador'] ? 'Administrador' : 'Usuario' ?></td>
                 <td>
-                    <?php if ($usuario['UserID'] != $adminUserID): ?>
+                    <?php if ($usuario['UserID'] != $adminUserID && $usuario['Username'] !== 'Rubenandia85'): ?>
                         <a href="editar_usuario.php?user_id=<?= $usuario['UserID'] ?>" class="btn">Editar</a>
                     <?php endif; ?>
-                    <?php if (!$usuario['EsAdministrador'] || ($isSuperAdmin && $usuario['Username'] !== 'Rubenandia85')): ?>
+                    <?php if ((!$usuario['EsAdministrador'] || ($isSuperAdmin && $usuario['Username'] !== 'Rubenandia85')) && $usuario['Username'] !== 'Rubenandia85'): ?>
                         <form action="eliminar_usuario.php" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar a este usuario?');" style="display:inline;">
                             <input type="hidden" name="user_id" value="<?= $usuario['UserID'] ?>">
                             <button type="submit" class="btn">Eliminar</button>

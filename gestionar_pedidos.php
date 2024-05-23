@@ -17,16 +17,49 @@ $pedidosPorPagina = 10;
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $inicio = ($pagina > 1) ? ($pagina * $pedidosPorPagina) - $pedidosPorPagina : 0;
 
-// Obtener el total de pedidos
-$totalPedidos = $conn->query("SELECT COUNT(*) FROM pedidos")->fetchColumn();
+// Obtener el estado del pedido seleccionado para filtrar
+$estadoSeleccionado = isset($_GET['estado']) ? $_GET['estado'] : '';
+
+// Lista de pedidos eliminados en la sesión
+if (!isset($_SESSION['eliminados'])) {
+    $_SESSION['eliminados'] = [];
+}
+
+// Ajustar la consulta SQL para filtrar por estado si se selecciona uno
+$sqlTotal = "SELECT COUNT(*) FROM pedidos";
+$sqlPedidos = "SELECT p.PedidoID, p.UserID, p.Total, p.FechaPedido, p.Estado, u.Username FROM pedidos p JOIN Usuario u ON p.UserID = u.UserID";
+
+$filters = [];
+if ($estadoSeleccionado) {
+    $filters[] = "Estado = :estado";
+}
+if (!empty($_SESSION['eliminados'])) {
+    $filters[] = "PedidoID NOT IN (" . implode(',', array_map('intval', $_SESSION['eliminados'])) . ")";
+}
+
+if ($filters) {
+    $sqlTotal .= " WHERE " . implode(' AND ', $filters);
+    $sqlPedidos .= " WHERE " . implode(' AND ', $filters);
+}
+
+$sqlPedidos .= " LIMIT :inicio, :pedidosPorPagina";
+
+$stmtTotal = $conn->prepare($sqlTotal);
+$stmtPedidos = $conn->prepare($sqlPedidos);
+
+if ($estadoSeleccionado) {
+    $stmtTotal->bindParam(':estado', $estadoSeleccionado, PDO::PARAM_STR);
+    $stmtPedidos->bindParam(':estado', $estadoSeleccionado, PDO::PARAM_STR);
+}
+
+$stmtTotal->execute();
+$totalPedidos = $stmtTotal->fetchColumn();
 $paginas = ceil($totalPedidos / $pedidosPorPagina);
 
-// Obtener los pedidos con límite y offset para paginación
-$stmt = $conn->prepare("SELECT p.PedidoID, p.UserID, p.Total, p.FechaPedido, p.Estado, u.Username FROM pedidos p JOIN Usuario u ON p.UserID = u.UserID LIMIT :inicio, :pedidosPorPagina");
-$stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
-$stmt->bindParam(':pedidosPorPagina', $pedidosPorPagina, PDO::PARAM_INT);
-$stmt->execute();
-$pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmtPedidos->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+$stmtPedidos->bindParam(':pedidosPorPagina', $pedidosPorPagina, PDO::PARAM_INT);
+$stmtPedidos->execute();
+$pedidos = $stmtPedidos->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,11 +70,23 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/gestionar_pedidos.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="js/gestionar_pedidos.js" defer></script>
 </head>
 <body>
 <?php include 'header.php'; ?>
 <div class="container">
     <h1>Gestionar Pedidos</h1>
+    <form method="GET" action="gestionar_pedidos.php" id="filtroForm" class="filter-form">
+        <label for="estado">Filtrar por estado:</label>
+        <select name="estado" id="estado">
+            <option value="">Todos</option>
+            <option value="Tramitando Pedido" <?= $estadoSeleccionado == 'Tramitando Pedido' ? 'selected' : '' ?>>Tramitando Pedido</option>
+            <option value="Pedido en el Almacén" <?= $estadoSeleccionado == 'Pedido en el Almacén' ? 'selected' : '' ?>>Pedido en el Almacén</option>
+            <option value="En Camino" <?= $estadoSeleccionado == 'En Camino' ? 'selected' : '' ?>>En Camino</option>
+            <option value="Entregado" <?= $estadoSeleccionado == 'Entregado' ? 'selected' : '' ?>>Entregado</option>
+        </select>
+    </form>
     <table class="table">
         <thead>
             <tr>
@@ -55,7 +100,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </thead>
         <tbody>
             <?php foreach ($pedidos as $pedido): ?>
-            <tr>
+            <tr id="pedido-<?= htmlspecialchars($pedido['PedidoID']) ?>">
                 <td><?= htmlspecialchars($pedido['PedidoID']) ?></td>
                 <td><?= htmlspecialchars($pedido['Username']) ?></td>
                 <td>€<?= number_format($pedido['Total'], 2) ?></td>
@@ -64,6 +109,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>
                     <?php if ($pedido['Estado'] == 'Entregado'): ?>
                         <span>Este pedido ya ha sido entregado.</span>
+                        <button class="btn delete-btn" data-pedido-id="<?= $pedido['PedidoID'] ?>"><i class="fas fa-trash-alt"></i></button>
                     <?php else: ?>
                         <form action="actualizar_estado_pedido.php" method="post">
                             <input type="hidden" name="pedido_id" value="<?= $pedido['PedidoID'] ?>">
@@ -83,7 +129,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
     <div class="paginacion">
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
-            <a href="?pagina=<?= $i ?>" class="btn <?= $i == $pagina ? 'active' : '' ?>"><?= $i ?></a>
+            <a href="?pagina=<?= $i ?>&estado=<?= htmlspecialchars($estadoSeleccionado) ?>" class="btn <?= $i == $pagina ? 'active' : '' ?>"><?= $i ?></a>
         <?php endfor; ?>
     </div>
 </div>

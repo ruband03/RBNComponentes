@@ -21,19 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) {
     $isSuperAdmin = $currentUser['Username'] === 'Rubenandia85';
 
     if ($isSuperAdmin) {
-        // Verificar si el usuario a revocar es administrador
-        $stmt = $conn->prepare("SELECT EsAdministrador FROM Usuario WHERE UserID = ?");
+        // Verificar si el usuario a revocar es administrador y no es el SuperAdmin
+        $stmt = $conn->prepare("SELECT EsAdministrador, Username FROM Usuario WHERE UserID = ?");
         $stmt->execute([$userId]);
         $targetUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($targetUser && $targetUser['EsAdministrador']) {
+        if ($targetUser && $targetUser['EsAdministrador'] && $targetUser['Username'] !== 'Rubenandia85') {
             // Revocar permisos de administrador y establecer el mensaje
             $stmt = $conn->prepare("UPDATE Usuario SET EsAdministrador = 0, Mensaje = 'El SuperAdmin ha decidido revocarte los permisos de administrador.' WHERE UserID = ?");
             $stmt->execute([$userId]);
 
             $_SESSION['message'] = "Permisos de administrador revocados correctamente.";
         } else {
-            $_SESSION['message'] = "El usuario no tiene permisos de administrador.";
+            $_SESSION['message'] = "El usuario no tiene permisos de administrador o es el SuperAdmin.";
         }
     } else {
         $_SESSION['message'] = "No tienes permisos para realizar esta acción.";
