@@ -12,7 +12,6 @@ require_once 'conectaBBDD.php';
 
 $userId = $_SESSION['UserID'];
 
-// Obtener la lista de deseos del usuario
 $stmt = $conn->prepare("SELECT ListaDeseosID FROM listadeseos WHERE UsuarioID = ?");
 $stmt->execute([$userId]);
 $listaDeseos = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -21,7 +20,6 @@ $productos = [];
 if ($listaDeseos) {
     $listaDeseosId = $listaDeseos['ListaDeseosID'];
 
-    // Obtener los productos en la lista de deseos
     $stmt = $conn->prepare("SELECT p.ProductoID, p.Nombre, p.Precio, p.ImagenURL 
                             FROM listadeseosproducto ldp 
                             JOIN producto p ON ldp.ProductoID = p.ProductoID 

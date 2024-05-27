@@ -32,7 +32,6 @@ $stmt = $conn->prepare($query);
 $stmt->execute($params);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Obtener la lista de deseos del usuario
 $listaDeseos = [];
 if (isset($_SESSION['UserID'])) {
     $userId = $_SESSION['UserID'];

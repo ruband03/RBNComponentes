@@ -21,7 +21,6 @@ if (isset($_SESSION['UserID'])) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $cartCount = $result['total'] ? $result['total'] : 0;
 
-    // Obtener la imagen de perfil y el nombre de usuario
     $stmt = $conn->prepare("SELECT ProfileImage, Username, EsAdministrador FROM Usuario WHERE UserID = ?");
     $stmt->execute([$user_id]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);

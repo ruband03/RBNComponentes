@@ -15,7 +15,6 @@ $envio = $_SESSION['envio'];
 $metodoPago = $_SESSION['metodo_pago'];
 $costeEnvio = $_SESSION['coste_envio'];
 
-// Obtener los productos del carrito con sus precios
 $stmt = $conn->prepare("SELECT Producto.ProductoID, Producto.Precio, Carrito.Cantidad FROM Carrito JOIN Producto ON Carrito.ProductoID = Producto.ProductoID WHERE Carrito.UserID = ?");
 $stmt->execute([$userid]);
 $carrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +29,6 @@ $total += $costeEnvio;
 try {
     $conn->beginTransaction();
 
-    // Insertar el pedido
     $stmt = $conn->prepare("INSERT INTO Pedidos (UserID, Direccion, Ciudad, Comunidad, CodigoPostal, Telefono, Email, MetodoPago, CosteEnvio, Total) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         $userid,
@@ -47,7 +45,6 @@ try {
 
     $pedidoID = $conn->lastInsertId();
 
-    // Insertar los detalles del pedido
     $stmt = $conn->prepare("INSERT INTO DetallePedido (PedidoID, ProductoID, Cantidad, Precio) VALUES (?, ?, ?, ?)");
     foreach ($carrito as $producto) {
         $stmt->execute([
@@ -58,7 +55,6 @@ try {
         ]);
     }
 
-    // Limpiar el carrito
     $stmt = $conn->prepare("DELETE FROM Carrito WHERE UserID = ?");
     $stmt->execute([$userid]);
 

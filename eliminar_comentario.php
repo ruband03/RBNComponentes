@@ -11,7 +11,6 @@ if (!isset($_SESSION['UserID']) || !isset($_POST['valoracion_id'])) {
 
 $valoracionID = $_POST['valoracion_id'];
 
-// Verificar si el usuario es el autor del comentario o un administrador
 $stmt = $conn->prepare("SELECT UsuarioID, ProductoID FROM Valoración WHERE ValoraciónID = ?");
 $stmt->execute([$valoracionID]);
 $comentario = $stmt->fetch(PDO::FETCH_ASSOC);

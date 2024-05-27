@@ -10,7 +10,6 @@ if (!isset($_SESSION['UserID']) || !isset($_SESSION['esAdministrador']) || !$_SE
 
 $adminUserID = $_SESSION['UserID'];
 
-// Verificar si el usuario es SuperAdmin
 $stmt = $conn->prepare("SELECT Username FROM Usuario WHERE UserID = ?");
 $stmt->execute([$adminUserID]);
 $currentUser = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -2,19 +2,19 @@ let inactivityTime = function () {
     let time;
     window.onload = resetTimer;
     window.onmousemove = resetTimer;
-    window.onmousedown = resetTimer; // Catches touchscreen presses as well
+    window.onmousedown = resetTimer; 
     window.ontouchstart = resetTimer;
-    window.onclick = resetTimer; // Catches touchpad clicks as well
+    window.onclick = resetTimer; 
     window.onkeypress = resetTimer;
 
     function logout() {
         alert("Se ha cerrado tu sesión debido a inactividad.");
-        window.location.href = 'logout.php'; // Redirigir a la página de logout
+        window.location.href = 'logout.php'; 
     }
 
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logout, 120000); // Tiempo en milisegundos (2 minutos)
+        time = setTimeout(logout, 120000); //(2 minutos)
     }
 };
 

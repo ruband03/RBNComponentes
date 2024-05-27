@@ -12,11 +12,9 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Configurar la expiración de la sesión
-    $inactivityLimit = 1200; // Tiempo de inactividad en segundos (2 minutos)
+    $inactivityLimit = 1200; // (2 minutos)
 
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $inactivityLimit) {
-        // Tiempo de inactividad excedido, destruir la sesión y establecer mensaje de inactividad
         session_unset();
         session_destroy();
         session_start();
@@ -24,7 +22,7 @@ try {
         header("Location: login.php");
         exit();
     }
-    $_SESSION['LAST_ACTIVITY'] = time(); // actualizar el tiempo de la última actividad
+    $_SESSION['LAST_ACTIVITY'] = time();
 
 } catch (PDOException $e) {
     die("Error en la conexión a la base de datos: " . $e->getMessage());

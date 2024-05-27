@@ -1,4 +1,3 @@
-// gestionar_pedidos.js
 document.addEventListener('DOMContentLoaded', function() {
     var estadoSelect = document.getElementById('estado');
     if (estadoSelect) {

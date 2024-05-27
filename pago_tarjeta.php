@@ -9,8 +9,6 @@ if (!isset($_SESSION['UserID']) || !isset($_SESSION['envio']) || !isset($_SESSIO
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Procesar los datos de la tarjeta de crédito
-    // En un entorno real, aquí se integrarían servicios de pago seguros como Stripe o PayPal
 
     header('Location: resumen_pedido.php');
     exit();

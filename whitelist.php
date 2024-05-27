@@ -10,20 +10,16 @@ if (!isset($_SESSION['UserID']) || !$_SESSION['esAdministrador']) {
 
 require_once 'conectaBBDD.php';
 
-// Número de solicitudes por página
 $solicitudesPorPagina = 10;
 
-// Obtener el número de página actual
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $offset = ($paginaActual - 1) * $solicitudesPorPagina;
 
-// Contar el total de solicitudes
 $stmt = $conn->prepare("SELECT COUNT(*) as total FROM adminrequests");
 $stmt->execute();
 $totalSolicitudes = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
 $totalPaginas = ceil($totalSolicitudes / $solicitudesPorPagina);
 
-// Obtener las solicitudes para la página actual
 $stmt = $conn->prepare("SELECT ar.*, u.Username FROM adminrequests ar JOIN Usuario u ON ar.UserID = u.UserID LIMIT :limit OFFSET :offset");
 $stmt->bindValue(':limit', $solicitudesPorPagina, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);

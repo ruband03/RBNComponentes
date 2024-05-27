@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $name = $_POST['name'];
 
-    // Verificar si el usuario es "Rubenandia85"
     $stmt = $conn->prepare("SELECT Username FROM Usuario WHERE UserID = ?");
     $stmt->execute([$userId]);
     $targetUser = $stmt->fetch(PDO::FETCH_ASSOC);

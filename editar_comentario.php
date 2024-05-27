@@ -12,11 +12,9 @@ if (!isset($_SESSION['UserID'])) {
 $valoracionID = null;
 $comentario = null;
 
-// Si la solicitud es GET, se debe mostrar el formulario de edición
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['valoracion_id'])) {
     $valoracionID = $_GET['valoracion_id'];
     
-    // Verificar si el usuario es el autor del comentario o un administrador
     $stmt = $conn->prepare("SELECT UsuarioID, ProductoID, Comentario, Puntuación FROM Valoración WHERE ValoraciónID = ?");
     $stmt->execute([$valoracionID]);
     $comentario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,13 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['valoracion_id'])) {
     }
 }
 
-// Si la solicitud es POST, se debe procesar la actualización del comentario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valoracion_id'])) {
     $valoracionID = $_POST['valoracion_id'];
     $comentarioActualizado = $_POST['comentario'];
     $puntuacionActualizada = $_POST['puntuacion'];
 
-    // Verificar si el usuario es el autor del comentario o un administrador
     $stmt = $conn->prepare("SELECT UsuarioID, ProductoID FROM Valoración WHERE ValoraciónID = ?");
     $stmt->execute([$valoracionID]);
     $comentario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -51,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valoracion_id'])) {
     }
 }
 
-// Si no hay valoracionID o comentario, se redirige
 if (!$valoracionID || !$comentario) {
     header('Location: detalles_producto.php');
     exit();

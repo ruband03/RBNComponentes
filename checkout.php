@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ];
     $_SESSION['envio'] = $envio;
 
-    // Calcular el coste de envío
-    $costeEnvio = 1.69; // Coste base de envío
+    $costeEnvio = 1.69; 
     if (in_array($envio['comunidad'], ['Islas Baleares', 'Canarias', 'Ceuta', 'Melilla'])) {
         $costeEnvio = 5.40;
     }

@@ -148,9 +148,9 @@ footer {
 }
 
 .dropdown-menu {
-    display: none; /* Asegúrate de que el menú esté oculto por defecto */
+    display: none;
     position: absolute;
-    top: 60px; /* Ajusta esto si es necesario */
+    top: 60px;
     right: 0;
     background-color: white;
     min-width: 150px;

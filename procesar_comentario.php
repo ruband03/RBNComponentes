@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $puntuacion = $_POST['puntuacion'];
     $usuarioID = $_SESSION['UserID'];
 
-    // Verificar si el usuario ya ha dejado un comentario para este producto
     $stmt = $conn->prepare("SELECT ValoraciónID FROM Valoración WHERE UsuarioID = ? AND ProductoID = ?");
     $stmt->execute([$usuarioID, $productoID]);
     $existeComentario = $stmt->fetchColumn();

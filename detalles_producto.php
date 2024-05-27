@@ -11,7 +11,6 @@ if (!isset($_GET['id'])) {
 
 $productoID = $_GET['id'];
 
-// Obtener detalles del producto
 $stmt = $conn->prepare("SELECT * FROM Producto WHERE ProductoID = ?");
 $stmt->bindParam(1, $productoID);
 $stmt->execute();
@@ -22,19 +21,16 @@ if (!$producto) {
     exit();
 }
 
-// Parámetros para la paginación
 $comentariosPorPagina = 5;
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $inicio = ($paginaActual > 1) ? ($paginaActual * $comentariosPorPagina) - $comentariosPorPagina : 0;
 
-// Obtener el total de comentarios
 $stmt = $conn->prepare("SELECT COUNT(*) FROM Valoración WHERE ProductoID = ?");
 $stmt->bindParam(1, $productoID);
 $stmt->execute();
 $totalComentarios = $stmt->fetchColumn();
 $totalPaginas = ceil($totalComentarios / $comentariosPorPagina);
 
-// Obtener comentarios y valoraciones con límite y desplazamiento
 $stmt = $conn->prepare("SELECT v.ValoraciónID, v.Puntuación, v.Comentario, u.Username, u.UserID FROM Valoración v JOIN Usuario u ON v.UsuarioID = u.UserID WHERE ProductoID = ? LIMIT ? OFFSET ?");
 $stmt->bindParam(1, $productoID);
 $stmt->bindParam(2, $comentariosPorPagina, PDO::PARAM_INT);

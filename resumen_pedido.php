@@ -15,7 +15,6 @@ $envio = $_SESSION['envio'];
 $metodoPago = $_SESSION['metodo_pago'];
 $costeEnvio = $_SESSION['coste_envio'];
 
-// Obtener el nombre de la comunidad autónoma
 $comunidadID = $envio['comunidad'];
 $stmt = $conn->prepare("SELECT Nombre FROM comunidades WHERE ComunidadID = ?");
 $stmt->execute([$comunidadID]);

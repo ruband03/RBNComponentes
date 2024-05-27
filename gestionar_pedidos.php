@@ -12,20 +12,16 @@ require_once 'conectaBBDD.php';
 
 $adminUserID = $_SESSION['UserID'];
 
-// Configuración de la paginación
 $pedidosPorPagina = 10;
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $inicio = ($pagina > 1) ? ($pagina * $pedidosPorPagina) - $pedidosPorPagina : 0;
 
-// Obtener el estado del pedido seleccionado para filtrar
 $estadoSeleccionado = isset($_GET['estado']) ? $_GET['estado'] : '';
 
-// Lista de pedidos eliminados en la sesión
 if (!isset($_SESSION['eliminados'])) {
     $_SESSION['eliminados'] = [];
 }
 
-// Ajustar la consulta SQL para filtrar por estado si se selecciona uno
 $sqlTotal = "SELECT COUNT(*) FROM pedidos";
 $sqlPedidos = "SELECT p.PedidoID, p.UserID, p.Total, p.FechaPedido, p.Estado, u.Username FROM pedidos p JOIN Usuario u ON p.UserID = u.UserID";
 

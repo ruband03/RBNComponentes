@@ -7,7 +7,6 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']);
 }
 
-// Seleccionar productos aleatoriamente de la base de datos
 $stmt = $conn->prepare("SELECT * FROM Producto ORDER BY RAND() LIMIT 3");
 $stmt->execute();
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
