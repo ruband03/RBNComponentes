@@ -1,4 +1,3 @@
-/* ver_lista_deseos.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -74,4 +73,24 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 45%;
+    }
+
+    .btn {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: 100%;
+    }
+
+    .btn {
+        padding: 6px 10px;
+    }
 }

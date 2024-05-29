@@ -62,3 +62,31 @@ body {
 .paginacion .btn:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    .container2 {
+        padding: 15px;
+    }
+
+    .pedido {
+        padding: 15px;
+    }
+
+    .paginacion .btn {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container2 {
+        padding: 10px;
+    }
+
+    .pedido {
+        padding: 10px;
+    }
+
+    .paginacion .btn {
+        padding: 6px 10px;
+    }
+}

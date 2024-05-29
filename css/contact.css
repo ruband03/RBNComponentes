@@ -1,8 +1,19 @@
-/* contact.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 .contact-section ul li {
     margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .contact-section ul li {
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section ul li {
+        margin: 6px 0;
+    }
 }

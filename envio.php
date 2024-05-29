@@ -19,6 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
 
+    $envio_normal = 13.01;
+    $envio_especial = 14.64;
+    $comunidades_especiales = [4, 5, 18, 19];
+
+    $gastos_envio = in_array($comunidad, $comunidades_especiales) ? $envio_especial : $envio_normal;
+
     $_SESSION['envio'] = [
         'direccion' => $direccion,
         'ciudad' => $ciudad,
@@ -26,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'comunidad' => $comunidad,
         'codigo_postal' => $codigoPostal,
         'telefono' => $telefono,
-        'email' => $email
+        'email' => $email,
+        'gastos_envio' => $gastos_envio
     ];
 
     header('Location: metodo_pago.php');
@@ -44,28 +51,7 @@ $comunidades = $conn->query("SELECT ComunidadID, Nombre FROM comunidades")->fetc
 <title>Datos de Envío</title>
 <link rel="stylesheet" href="css/envio.css">
 <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const comunidadSelect = document.getElementById('comunidad');
-    const provinciaSelect = document.getElementById('provincia');
-
-    comunidadSelect.addEventListener('change', function () {
-        const comunidadID = comunidadSelect.value;
-
-        fetch('get_provincias.php?comunidad_id=' + comunidadID)
-            .then(response => response.json())
-            .then(data => {
-                provinciaSelect.innerHTML = '';
-                data.forEach(provincia => {
-                    const option = document.createElement('option');
-                    option.value = provincia.ProvinciaID;
-                    option.textContent = provincia.Nombre;
-                    provinciaSelect.appendChild(option);
-                });
-            });
-    });
-});
-</script>
+<script src="js/envio.js"></script>
 </head>
 <body>
 <?php include 'header.php'; ?>

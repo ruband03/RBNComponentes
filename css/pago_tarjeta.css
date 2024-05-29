@@ -46,3 +46,23 @@ body {
 .btn:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    .credit-card-section .container {
+        padding: 15px;
+    }
+
+    .form-group input, .btn {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .credit-card-section .container {
+        padding: 10px;
+    }
+
+    .form-group input, .btn {
+        padding: 6px;
+    }
+}

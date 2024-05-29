@@ -39,3 +39,23 @@ table th {
 .pagination a:hover {
     background-color: #ddd;
 }
+
+@media (max-width: 768px) {
+    table th, table td {
+        padding: 6px;
+    }
+
+    .pagination a {
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    table th, table td {
+        padding: 4px;
+    }
+
+    .pagination a {
+        padding: 4px 8px;
+    }
+}

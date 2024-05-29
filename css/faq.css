@@ -1,4 +1,3 @@
-/* faq.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -9,4 +8,16 @@ body {
 
 .faq-item h3 {
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .faq-section .faq-item {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section .faq-item {
+        margin: 10px 0;
+    }
 }

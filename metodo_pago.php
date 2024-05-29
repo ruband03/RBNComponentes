@@ -9,13 +9,7 @@ if (!isset($_SESSION['UserID']) || !isset($_SESSION['envio'])) {
 }
 
 $envio = $_SESSION['envio'];
-$provincia = $envio['provincia'];
-
-if ($provincia == 'Las Palmas' || $provincia == 'Santa Cruz de Tenerife' || $provincia == 'Baleares' || $provincia == 'Ceuta' || $provincia == 'Melilla') {
-    $costeEnvio = 5.40;
-} else {
-    $costeEnvio = 1.69;
-}
+$costeEnvio = $envio['gastos_envio'];
 
 $_SESSION['coste_envio'] = $costeEnvio;
 
@@ -40,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Método de Pago</title>
 <link rel="stylesheet" href="css/metodo_pago.css">
 <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -68,4 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </footer>
 </body>
-</html> 
+</html>

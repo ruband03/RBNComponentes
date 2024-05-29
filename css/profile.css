@@ -81,3 +81,23 @@ body {
     background-color: #ffe6e6;
     border: 1px solid #ffb3b3;
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-group input, .form-group button {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .form-group input, .form-group button {
+        padding: 6px;
+    }
+}

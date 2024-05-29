@@ -1,4 +1,3 @@
-/* ver_usuarios.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -29,4 +28,24 @@ body {
 
 .paginacion a:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 8px;
+    }
+
+    .paginacion a {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .table th, .table td {
+        padding: 6px;
+    }
+
+    .paginacion a {
+        padding: 6px 10px;
+    }
 }

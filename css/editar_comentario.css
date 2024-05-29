@@ -1,4 +1,3 @@
-/* editar_comentario.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -10,4 +9,18 @@ body {
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .edit-comment textarea {
+        padding: 8px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-comment textarea {
+        padding: 6px;
+        height: 60px;
+    }
 }

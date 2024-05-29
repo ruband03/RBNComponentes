@@ -1,4 +1,3 @@
-/* administrar_usuario.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -34,4 +33,24 @@ th {
 
 .btn:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    table, th, td {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    table, th, td {
+        padding: 6px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+    }
 }

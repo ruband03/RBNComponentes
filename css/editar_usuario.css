@@ -1,8 +1,19 @@
-/* editar_usuario.php */
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 .profile-section .profile-form .form-group {
     margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .profile-section .profile-form .form-group {
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-section .profile-form .form-group {
+        margin: 6px 0;
+    }
 }

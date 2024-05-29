@@ -31,7 +31,7 @@ foreach ($carrito as $producto) {
 
 $total += $costeEnvio;
 ?>
-
+<?php include 'header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,7 +42,6 @@ $total += $costeEnvio;
 <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<?php include 'header.php'; ?>
 
 <section class="resumen-section">
     <div class="container2">
